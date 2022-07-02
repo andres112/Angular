@@ -1,11 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { CounterComponent } from './components/counter/counter.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        CounterComponent
       ],
     }).compileComponents();
   });
@@ -16,16 +18,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'bases'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it(`should have as title 'Counter app'`, () => {
+    const fixture = TestBed.createComponent(CounterComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('bases');
+    expect(app.title).toEqual('Counter app');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('bases app is running!');
+    expect(compiled.querySelector('.content h1')?.textContent).toContain('Counter app');
   });
 });
