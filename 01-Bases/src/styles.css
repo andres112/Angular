@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Mali:wght@300;400;500&display=swap");
+
+* {
+  font-family: "Mali", cursive;
+}
+
+html,
+body {
+  background: rgb(255, 255, 255);
+  margin: 20px;
+  color: #3e4144;
+  -webkit-font-smoothing: antialiased;
+}
+
+dd {
+  font-weight: bold;
+}
+
+button {
+  background-color: rgb(241, 43, 43);
+  border-radius: 5px;
+  border: 0px;
+  color: white;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding: 5px 10px;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+button.increment{
+  background-color: rgb(42, 230, 42);
+}
+
+button:hover {
+  background-color: #989797;
+}
+
+button:focus {
+  outline: none;
+}
+
+.p-1 {
+  padding: 1px;
+}
