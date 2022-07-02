@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
   heroes: string[];
-  deletedHeroe: string = '';
+  deletedHero: string = '';
   constructor() {
     console.log('ListComponent constructor');
     this.heroes = ['Alf', 'Bert', 'Cora', 'Dora'];
@@ -18,11 +18,12 @@ export class ListComponent implements OnInit {
   }
 
   // methods
-  deleteLastHeroe = (): void => {
+  deleteLastHero = (): void => {
     if (this.heroes.length > 0) {
-      this.deletedHeroe = this.heroes.pop() ?? '';
+      this.deletedHero = this.heroes.pop() ?? '';
       return;
     }
+    this.deletedHero = '';
     alert('No more heroes to delete');
   };
 }
