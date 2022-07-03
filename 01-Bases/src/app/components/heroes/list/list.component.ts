@@ -24,6 +24,5 @@ export class ListComponent implements OnInit {
       return;
     }
     this.deletedHero = '';
-    alert('No more heroes to delete');
   };
 }
