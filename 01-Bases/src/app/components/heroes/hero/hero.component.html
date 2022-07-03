@@ -1,11 +1,13 @@
-<h1>List of Heroes</h1>
-<h2>{{ name }}</h2>
+<h1>Hero changer</h1>
+<h2>
+  {{ name }}
+  <button (click)="[(setAge = 200), (setName = 'Spiderman')]">Click Me</button>
+</h2>
 <dl>
-    <td>Name</td>
-    <dd>{{name}}</dd>
-    <td>Age</td>
-    <dd>{{age}}</dd>
-    <td>Mix</td>
-    <dd>{{getName}}</dd>
+  <td>Name</td>
+  <dd>{{ name }}</dd>
+  <td>Age</td>
+  <dd>{{ age }}</dd>
+  <td>Mix</td>
+  <dd>{{ getName }}</dd>
 </dl>
-<button (click)="[setAge = 200, setName='Spiderman']">Click Me</button>

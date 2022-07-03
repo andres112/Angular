@@ -1,0 +1,20 @@
+<h1>Dragon Ball Z 🐉</h1>
+
+<div class="row">
+  <div class="column">
+    <h3>Fighters</h3>
+    <ul>
+      <li *ngFor="let f of fighters">
+        {{f.name}} - {{f.power}}
+      </li>
+    </ul>
+  </div>
+  <div class="column">
+    <h3>Settings</h3>
+    <form (ngSubmit)="addFighter()">
+      <input type="text" name="name" placeholder="Name" />
+      <input type="text" name="power" placeholder="Power" />
+      <button type="submit">Add</button>
+    </form>
+  </div>
+</div>
