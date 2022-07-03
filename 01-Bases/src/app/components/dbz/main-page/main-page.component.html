@@ -4,16 +4,24 @@
   <div class="column">
     <h3>Fighters</h3>
     <ul>
-      <li *ngFor="let f of fighters">
-        {{f.name}} - {{f.power}}
-      </li>
+      <li *ngFor="let f of fighters">{{ f.name }} - {{ f.power | number }}</li>
     </ul>
   </div>
   <div class="column">
     <h3>Settings</h3>
     <form (ngSubmit)="addFighter()">
-      <input type="text" name="name" placeholder="Name" />
-      <input type="text" name="power" placeholder="Power" />
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        [(ngModel)]="newFighter.name"
+      />
+      <input
+        type="number"
+        name="power"
+        placeholder="0"
+        [(ngModel)]="newFighter.power"
+      />
       <button type="submit">Add</button>
     </form>
   </div>
