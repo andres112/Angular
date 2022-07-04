@@ -9,13 +9,10 @@ export class ListComponent implements OnInit {
   heroes: string[];
   deletedHero: string = '';
   constructor() {
-    console.log('ListComponent constructor');
     this.heroes = ['Alf', 'Bert', 'Cora', 'Dora'];
   }
 
-  ngOnInit(): void {
-    console.log('ListComponent ngOnInit');
-  }
+  ngOnInit(): void {}
 
   // methods
   deleteLastHero = (): void => {

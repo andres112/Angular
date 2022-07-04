@@ -2,12 +2,11 @@
 
 <div class="row">
   <div class="column">
-    <app-fighters [data]="fighters"></app-fighters>
+    <app-fighters></app-fighters>
   </div>
   <div class="column">
     <app-fighter-form
       [newFighter]="newFighter"
-      (onSubmit)="addFighter()"
     ></app-fighter-form>
   </div>
 </div>
