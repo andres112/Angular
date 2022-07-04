@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
-import { MainPageComponent } from '../main-page/main-page.component';
+import { Component, Input } from '@angular/core';
+import { FighterInterface } from '../interfaces/dbz.interface';
 
 @Component({
   selector: 'app-fighters',
   templateUrl: './fighters.component.html',
 })
-export class FightersComponent extends MainPageComponent {}
+export class FightersComponent {
+  @Input('data') fighters: FighterInterface[] = [];
+}

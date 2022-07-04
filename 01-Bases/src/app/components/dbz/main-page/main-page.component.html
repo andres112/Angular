@@ -2,24 +2,12 @@
 
 <div class="row">
   <div class="column">
-    <app-fighters></app-fighters>
+    <app-fighters [data]="fighters"></app-fighters>
   </div>
   <div class="column">
-    <h3>Settings</h3>
-    <form (ngSubmit)="addFighter()">
-      <input
-        type="text"
-        name="name"
-        placeholder="Name"
-        [(ngModel)]="newFighter.name"
-      />
-      <input
-        type="number"
-        name="power"
-        placeholder="0"
-        [(ngModel)]="newFighter.power"
-      />
-      <button type="submit">Add</button>
-    </form>
+    <app-fighter-form
+      [newFighter]="newFighter"
+      (onSubmit)="addFighter()"
+    ></app-fighter-form>
   </div>
 </div>

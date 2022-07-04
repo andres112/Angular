@@ -1,0 +1,16 @@
+<h3>Add Fighter</h3>
+<form (ngSubmit)="addFighter()">
+  <input
+    type="text"
+    name="name"
+    placeholder="Name"
+    [(ngModel)]="newFighter.name"
+  />
+  <input
+    type="number"
+    name="power"
+    placeholder="0"
+    [(ngModel)]="newFighter.power"
+  />
+  <button type="submit">Add</button>
+</form>
