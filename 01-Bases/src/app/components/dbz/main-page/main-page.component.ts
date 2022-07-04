@@ -13,14 +13,5 @@ class Fighter implements FighterInterface {
 })
 export class MainPageComponent implements OnInit {
   newFighter: FighterInterface = { name: '', power: 0 };
-
   ngOnInit(): void {}
-
-  // addFighter = () => {
-  //   const { name, power } = this.newFighter;
-  //   if (name.trim().length === 0 || power < 0) {
-  //     return;
-  //   }
-  //   this.fighters.push(new Fighter(name, power));
-  // };
 }

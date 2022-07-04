@@ -17,4 +17,12 @@ export class DbzService {
     this._fighters.push(new Fighter('Goku', 18000));
     this._fighters.push(new Fighter('Vegeta', 12000));
   }
+
+  addFighter = (fighter: FighterInterface): void => {
+    const { name, power } = fighter;
+    if (name.trim().length === 0 || power < 0) {
+      return;
+    }
+    this._fighters.push(new Fighter(name, power));
+  };
 }
