@@ -1,1 +1,18 @@
-<div class="col d-flex justify-content-center">some data here...</div>
+<div class="row d-flex justify-content-center">
+  <div *ngIf="gifList.length === 0" class="col-12">
+    No results to display
+  </div>
+  <div
+    class="col-xs-12 col-sm-6 col-md-4 col-xl-3"
+    *ngFor="let gif of gifList"
+  >
+    <div class="card">
+      <img
+        [src]="gif.images.downsized_medium.url"
+        [alt]="gif.title"
+        class="card-img-top"
+      />
+      <div class="card-body"></div>
+    </div>
+  </div>
+</div>
