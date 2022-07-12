@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { Gif, GifResponse } from '../components/gifs/models/gif.model';
 const MAX_ITEMS = 10;
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ export class GifsService {
   private apiGiphy: string = environment.giphy;
   private _history: string[] = [];
 
-  public gifs: any[] = [];
+  public gifs: Gif[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -31,6 +32,6 @@ export class GifsService {
 
   searchGifs = (term: string) => {
     const url = `https://api.giphy.com/v1/gifs/search?api_key=${this.apiGiphy}&q=${term}&limit=20`;
-    this.http.get(url).subscribe((res: any) => (this.gifs = res.data));
+    this.http.get<GifResponse>(url).subscribe((res) => (this.gifs = res.data));
   };
 }
