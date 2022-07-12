@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Gif, GifResponse } from '../components/gifs/models/gif.model';
@@ -7,12 +7,13 @@ const MAX_ITEMS = 10;
   providedIn: 'root',
 })
 export class GifsService {
-  private apiGiphy: string = environment.giphy;
   private _history: string[] = [];
-
+  private BASE_URL = 'https://api.giphy.com/v1/gifs';
   public gifs: Gif[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this._history = JSON.parse(localStorage.getItem('gifs')!) ?? [];
+  }
 
   get history(): string[] {
     return [...this._history];
@@ -28,10 +29,18 @@ export class GifsService {
     }
     this.searchGifs(item);
     this._history.unshift(item);
+
+    localStorage.setItem('gifs', JSON.stringify(this._history));
   }
 
   searchGifs = (term: string) => {
-    const url = `https://api.giphy.com/v1/gifs/search?api_key=${this.apiGiphy}&q=${term}&limit=20`;
-    this.http.get<GifResponse>(url).subscribe((res) => (this.gifs = res.data));
+    const params = new HttpParams()
+      .set('api_key', environment.giphy)
+      .set('q', term)
+      .set('limit', '30');
+    const url = `${this.BASE_URL}/search`;
+    this.http
+      .get<GifResponse>(url, { params: params })
+      .subscribe((res) => (this.gifs = res.data));
   };
 }

@@ -15,4 +15,8 @@ export class SidebarComponent implements OnInit {
   get history(): string[] {
     return this.gifsService.history;
   }
+
+  search = (term:string) =>{
+    this.gifsService.addHistoryItem(term);
+  }
 }
