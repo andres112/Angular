@@ -15,8 +15,10 @@
 </div>
 <hr />
 
-<div class="alert alert-danger">There wasn't result for your search.</div>
-<div class="row">
+<div class="alert alert-danger" *ngIf="isError; else resultContent">
+  There wasn't result for your search.
+</div>
+<ng-template class="row" #resultContent>
   <div class="col">
     <table class="table table-hover">
       <thead>
@@ -38,4 +40,4 @@
       </tbody>
     </table>
   </div>
-</div>
+</ng-template>
