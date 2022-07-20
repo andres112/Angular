@@ -10,6 +10,7 @@ import { Country } from '../../interfaces/country.interface';
 export class ByCountryComponent implements OnInit {
   public term: string = '';
   public isError: boolean = false;
+  public countries: Country[] = [];
   constructor(private countryService: CountryService) {}
 
   ngOnInit(): void {}
@@ -18,9 +19,9 @@ export class ByCountryComponent implements OnInit {
     this.isError = false;
     this.countryService.searchCountry(this.term).subscribe({
       next: (countries: Country[]) => {
-        console.log(countries);
+        this.countries = countries;
       },
-      error: (err) => (this.isError = true),
+      error: (err) => ((this.isError = true), (this.countries = [])),
     });
   };
 }
