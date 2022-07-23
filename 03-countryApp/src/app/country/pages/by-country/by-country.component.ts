@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CountryService } from '../../services/country.service';
 import { Country } from '../../interfaces/country.interface';
 
 @Component({
@@ -8,20 +7,12 @@ import { Country } from '../../interfaces/country.interface';
   styleUrls: ['./by-country.component.scss'],
 })
 export class ByCountryComponent implements OnInit {
-  public term: string = '';
   public isError: boolean = false;
   public countries: Country[] = [];
-  constructor(private countryService: CountryService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
-  search = () => {
-    this.isError = false;
-    this.countryService.searchCountry(this.term).subscribe({
-      next: (countries: Country[]) => {
-        this.countries = countries;
-      },
-      error: (err) => ((this.isError = true), (this.countries = [])),
-    });
-  };
+  setCountries = (countries: Country[]) => (this.countries = countries);
+  setError = (value: any): void => (this.isError = value);
 }

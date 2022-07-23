@@ -1,45 +1,16 @@
 <h2>By Country</h2>
 <hr />
-<div class="row">
-  <div class="col">
-    <form (ngSubmit)="search()" autocomplete="off">
-      <input
-        type="text"
-        name="term"
-        class="form-control"
-        placeholder="Search country..."
-        [(ngModel)]="term"
-      />
-    </form>
-  </div>
-</div>
+<ng-container>
+  <con-country-search
+    (onError)="setError($event)"
+    (onSearch)="setCountries($event)"
+  ></con-country-search>
+</ng-container>
 <hr />
 
 <div class="alert alert-danger" *ngIf="isError; else resultContent">
   There wasn't result for your search.
 </div>
 <ng-template class="row" #resultContent>
-  <div class="col" *ngIf="countries.length > 0">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Flag</th>
-          <th>Name</th>
-          <th>Population</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of countries; let i = index">
-          <td>{{ i + 1 }}</td>
-          <td><img [src]="item.flag" /></td>
-          <td>{{ item.name }}</td>
-          <td>{{ item.population | number }}</td>
-          <td>
-            <a [routerLink]="['/country', item.alpha2Code]">See..</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <con-country-table [countries]="countries"></con-country-table>
 </ng-template>
