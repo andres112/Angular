@@ -23,6 +23,4 @@ export class ByCapitalComponent implements OnInit {
       error: (err) => ((this.isError = true), (this.countries = [])),
     });
   };
-
-  suggest = (term: any) => console.log(term);
 }

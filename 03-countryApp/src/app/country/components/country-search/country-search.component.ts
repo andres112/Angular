@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { debounceTime, Subject } from 'rxjs';
 
 @Component({
@@ -7,6 +7,7 @@ import { debounceTime, Subject } from 'rxjs';
   styleUrls: ['./country-search.component.scss'],
 })
 export class CountrySearchComponent implements OnInit {
+  @Input() placeholder: string = '';
   @Output() onSearch = new EventEmitter<string>();
   @Output() onDebounce: EventEmitter<string> = new EventEmitter();
   debouncer: Subject<string> = new Subject(); // create an observable type Subject
