@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Country } from '../../interfaces/country.interface';
+import { CountryService } from '../../services/country.service';
 
 @Component({
   selector: 'con-by-country',
@@ -9,10 +10,19 @@ import { Country } from '../../interfaces/country.interface';
 export class ByCountryComponent implements OnInit {
   public isError: boolean = false;
   public countries: Country[] = [];
-  constructor() {}
+  constructor(private countryService: CountryService) {}
 
   ngOnInit(): void {}
 
-  setCountries = (countries: Country[]) => (this.countries = countries);
-  setError = (value: any): void => (this.isError = value);
+  search = (term: any) => {
+    this.isError = false;
+    this.countryService.searchCountry(term).subscribe({
+      next: (countries: Country[]) => {
+        this.countries = countries;
+      },
+      error: (err) => ((this.isError = true), (this.countries = [])),
+    });
+  };
+
+  suggest = (term: any) => console.log(term);
 }

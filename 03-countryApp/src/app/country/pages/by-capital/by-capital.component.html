@@ -1,1 +1,16 @@
-<p>by-capital works!</p>
+<h2>By Capital</h2>
+<hr />
+<ng-container>
+  <con-country-search
+    (onSearch)="search($event)"
+    (onDebounce)="suggest($event)"
+  ></con-country-search>
+</ng-container>
+<hr />
+
+<div class="alert alert-danger" *ngIf="isError; else resultContent">
+  There wasn't result for your search.
+</div>
+<ng-template class="row" #resultContent>
+  <con-country-table [countries]="countries"></con-country-table>
+</ng-template>

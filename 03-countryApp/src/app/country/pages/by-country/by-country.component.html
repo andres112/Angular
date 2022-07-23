@@ -2,8 +2,8 @@
 <hr />
 <ng-container>
   <con-country-search
-    (onError)="setError($event)"
-    (onSearch)="setCountries($event)"
+    (onSearch)="search($event)"
+    (onDebounce)="suggest($event)"
   ></con-country-search>
 </ng-container>
 <hr />

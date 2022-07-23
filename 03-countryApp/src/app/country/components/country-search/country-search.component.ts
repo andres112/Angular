@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Country } from '../../interfaces/country.interface';
-import { CountryService } from '../../services/country.service';
+import { debounceTime, Subject } from 'rxjs';
 
 @Component({
   selector: 'con-country-search',
@@ -8,19 +7,23 @@ import { CountryService } from '../../services/country.service';
   styleUrls: ['./country-search.component.scss'],
 })
 export class CountrySearchComponent implements OnInit {
-  @Output() onError: EventEmitter<boolean> = new EventEmitter();
-  @Output() onSearch: EventEmitter<Country[]> = new EventEmitter();
-  public term: string = '';
-  constructor(private countryService: CountryService) {}
+  @Output() onSearch = new EventEmitter<string>();
+  @Output() onDebounce: EventEmitter<string> = new EventEmitter();
+  debouncer: Subject<string> = new Subject(); // create an observable type Subject
 
-  ngOnInit(): void {}
-  search = () => {
-    this.onError.emit(false);
-    this.countryService.searchCountry(this.term).subscribe({
-      next: (countries: Country[]) => {
-        this.onSearch.emit(countries);
-      },
-      error: (err) => (this.onError.emit(true), this.onSearch.emit([])),
-    });
+  public term: string = '';
+  constructor() {}
+
+  // observable is initialized with subscription
+  ngOnInit(): void {
+    //debounceTime allows to get data after time without a key press
+    this.debouncer
+      .pipe(debounceTime(300)) // pipe to manipulate observable
+      .subscribe((value) => this.onDebounce.emit(value)); //subscribe to observable
+  }
+  setTerm = () => {
+    this.debouncer.next(this.term); // get next term of observable
   };
+
+  setSearchTerm = () => this.onSearch.emit(this.term);
 }
