@@ -10,5 +10,15 @@
         (input)="setTerm()"
       />
     </form>
+    <ul class="list-group" *ngIf="suggestions.length">
+      <li
+        class="list-group-item list-group-item-action"
+        *ngFor="let country of suggestions"
+        (click) = "setSearchTerm(country.name)"
+      >
+        <img class="icon-flag" [src]="country.flag" />
+        {{ country.name }}
+      </li>
+    </ul>
   </div>
 </div>

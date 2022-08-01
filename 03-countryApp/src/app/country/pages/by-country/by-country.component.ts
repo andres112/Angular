@@ -10,6 +10,7 @@ import { CountryService } from '../../services/country.service';
 export class ByCountryComponent implements OnInit {
   public isError: boolean = false;
   public countries: Country[] = [];
+  public suggestedCountries: Country[] = [];
   constructor(private countryService: CountryService) {}
 
   ngOnInit(): void {}
@@ -19,10 +20,18 @@ export class ByCountryComponent implements OnInit {
     this.countryService.searchCountry(term).subscribe({
       next: (countries: Country[]) => {
         this.countries = countries;
+        this.suggestedCountries = [];
       },
       error: (err) => ((this.isError = true), (this.countries = [])),
     });
   };
 
-  suggest = (term: any) => console.log(term);
+  suggest = (term: any) => {
+    this.suggestedCountries = [];
+    this.countryService.searchCountry(term).subscribe({
+      next: (countries: Country[]) => {
+        this.suggestedCountries = countries.splice(0, 5);
+      },
+    });
+  };
 }

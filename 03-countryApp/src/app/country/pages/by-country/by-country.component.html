@@ -4,6 +4,7 @@
   <con-country-search
     (onSearch)="search($event)"
     (onDebounce)="suggest($event)"
+    [suggestions]="suggestedCountries"
     placeholder="Search country..."
   ></con-country-search>
 </ng-container>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { debounceTime, Subject } from 'rxjs';
+import { Country } from '../../interfaces/country.interface';
 
 @Component({
   selector: 'con-country-search',
@@ -8,6 +9,7 @@ import { debounceTime, Subject } from 'rxjs';
 })
 export class CountrySearchComponent implements OnInit {
   @Input() placeholder: string = '';
+  @Input() suggestions: Country[] = [];
   @Output() onSearch = new EventEmitter<string>();
   @Output() onDebounce: EventEmitter<string> = new EventEmitter();
   debouncer: Subject<string> = new Subject(); // create an observable type Subject
@@ -26,5 +28,8 @@ export class CountrySearchComponent implements OnInit {
     this.debouncer.next(this.term); // get next term of observable
   };
 
-  setSearchTerm = () => this.onSearch.emit(this.term);
+  setSearchTerm = (name?: any) => {
+    this.onSearch.emit(name ?? this.term);
+    this.term = '';
+  };
 }
