@@ -17,6 +17,7 @@ export class ByRegionComponent implements OnInit {
   ngOnInit(): void {}
 
   public setRegion = (region: string): void => {
+    if(this.selectedRegion === region) return;
     this.selectedRegion = region;
     this.search();
   };
