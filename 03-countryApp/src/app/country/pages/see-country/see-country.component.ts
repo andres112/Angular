@@ -27,13 +27,5 @@ export class SeeCountryComponent implements OnInit {
           this.country = countries;
         },
       });
-    // this.activeRoute.params.subscribe(({ id }) => {
-    //   this.countryService.searchCountryByCode(id).subscribe({
-    //     next: (countries: Country) => {
-    //       this.countries = [countries];
-    //       console.log('Individual country', this.countries);
-    //     },
-    //   });
-    // });
   }
 }
