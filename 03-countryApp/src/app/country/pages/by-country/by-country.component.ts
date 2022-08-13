@@ -2,12 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { Country } from '../../interfaces/country.interface';
 import { CountryService } from '../../services/country.service';
 
+import SwiperCore, { SwiperOptions, Autoplay, Navigation, Pagination } from 'swiper';
+
+SwiperCore.use([Autoplay, Navigation, Pagination]);
+
 @Component({
   selector: 'con-by-country',
   templateUrl: './by-country.component.html',
   styleUrls: ['./by-country.component.scss'],
 })
 export class ByCountryComponent implements OnInit {
+  config: SwiperOptions = {
+    slidesPerView: 1,
+    spaceBetween: 50,
+    navigation: true,
+    pagination: { clickable: true },
+    scrollbar: { draggable: true },
+    loop:true,
+    autoplay: {delay:2000}
+  }
+
   public isError: boolean = false;
   public countries: Country[] = [];
   public suggestedCountries: Country[] = [];

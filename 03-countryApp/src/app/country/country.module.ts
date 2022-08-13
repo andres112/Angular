@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { SwiperModule } from 'swiper/angular';
 
 import { ByCapitalComponent } from './pages/by-capital/by-capital.component';
 import { ByCountryComponent } from './pages/by-country/by-country.component';
@@ -25,6 +26,6 @@ import { CountrySearchComponent } from './components/country-search/country-sear
     ByRegionComponent,
     SeeCountryComponent,
   ],
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, SwiperModule],
 })
 export class CountryModule {}
