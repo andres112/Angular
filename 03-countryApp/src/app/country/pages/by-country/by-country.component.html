@@ -16,36 +16,3 @@
 <ng-template class="row" #resultContent>
   <con-country-table [countries]="countries"></con-country-table>
 </ng-template>
-
-<div class="Slider container-xxl">
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-body p-0">
-          <swiper
-            [config]="config"
-            [pagination]="{
-              type: 'fraction',
-              el: '#navigation'
-            }"
-            style="background-color: green"
-          >
-            <ng-template swiperSlide
-              ><img src="https://api.lorem.space/image/book?w=768&h=600"
-            /></ng-template>
-            <ng-template swiperSlide
-              ><img src="https://api.lorem.space/image/movie?w=768&h=600"
-            /></ng-template>
-            <ng-template swiperSlide
-              ><img src="https://api.lorem.space/image/game?w=768&h=600"
-            /></ng-template>
-          </swiper>
-        </div>
-
-        <div class="card-footer d-flex justify-content-center">
-          <div id="navigation" style="width: auto"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
