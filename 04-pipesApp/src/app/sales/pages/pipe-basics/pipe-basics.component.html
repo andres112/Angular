@@ -1,6 +1,6 @@
 <div class="text-layout">
   <h1>Basic Pipes</h1>
-  <p>Pipes included in Angular</p>
+  <p>Pipes included in Angular for text</p>
 </div>
 <div class="grid">
   <div class="col-4">
@@ -26,6 +26,39 @@
       subheader="Transform all the string in titlecase"
     >
       {{ "andres FeliPe dOrado" | titlecase }}
+    </p-card>
+  </div>
+</div>
+
+<div class="text-layout">
+  <h1>Date Pipe</h1>
+  <p>
+    Pipes included in Angular for Dates. <br />
+    value_expression | date [ : format [ : timezone [ : locale ] ] ]
+  </p>
+</div>
+
+<div class="grid">
+  <div class="col-6">
+    <p-card>
+      <ul>
+        <li>date</li>
+        <li>date | date</li>
+        <li>date | date: 'short'</li>
+        <li>date | date: 'long'</li>
+        <li>date | date: 'G yy LLL E dd'</li>
+      </ul>
+    </p-card>
+  </div>
+  <div class="col-6">
+    <p-card>
+      <ul>
+        <li>{{ date }}</li>
+        <li>{{ date | date }}</li>
+        <li>{{ date | date: "short" }}</li>
+        <li>{{ date | date: "long" }}</li>
+        <li>{{ date | date: "G yy LLL E dd" }}</li>
+      </ul>
     </p-card>
   </div>
 </div>

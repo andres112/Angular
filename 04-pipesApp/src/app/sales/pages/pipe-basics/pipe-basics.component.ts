@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './pipe-basics.component.html',
   styleUrls: ['./pipe-basics.component.scss'],
 })
-export class PipeBasicsComponent {}
+export class PipeBasicsComponent {
+  public date: Date = new Date();
+}
