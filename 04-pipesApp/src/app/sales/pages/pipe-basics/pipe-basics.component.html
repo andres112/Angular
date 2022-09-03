@@ -1,1 +1,31 @@
-<p>pipe-basics works!</p>
+<div class="text-layout">
+  <h1>Basic Pipes</h1>
+  <p>Pipes included in Angular</p>
+</div>
+<div class="grid">
+  <div class="col-4">
+    <!-- Requires the importing of prime ng module in sales module -->
+    <p-card
+      header="Uppercase"
+      subheader="Transform all the string into uppercase"
+    >
+      {{ "andres Felipe Dorado" | uppercase }}
+    </p-card>
+  </div>
+  <div class="col-4">
+    <p-card
+      header="Lowercase"
+      subheader="Transform all the string into lowercase"
+    >
+      {{ "andres Felipe Dorado" | lowercase }}
+    </p-card>
+  </div>
+  <div class="col-4">
+    <p-card
+      header="Titlecase"
+      subheader="Transform all the string in titlecase"
+    >
+      {{ "andres FeliPe dOrado" | titlecase }}
+    </p-card>
+  </div>
+</div>
