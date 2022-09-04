@@ -48,6 +48,12 @@
         <li>date | date: 'long'</li>
         <li>date | date: 'G yy LLL E dd'</li>
       </ul>
+      <hr />
+      <ul>
+        <li>date | date: 'long': 'GMT-8'</li>
+        <li>date | date: 'long': 'GMT-8': 'en'</li>
+        <li>date | date: 'long': 'GMT+5': 'de-CH'</li>
+      </ul>
     </p-card>
   </div>
   <div class="col-6">
@@ -58,6 +64,12 @@
         <li>{{ date | date: "short" }}</li>
         <li>{{ date | date: "long" }}</li>
         <li>{{ date | date: "G yy LLL E dd" }}</li>
+      </ul>
+      <hr />
+      <ul>
+        <li>{{ date | date: "long":"GMT-8" }}</li>
+        <li>{{ date | date: "long":"GMT-8":"en" }}</li>
+        <li>{{ date | date: "long":"GMT+5":"de-CH" }}</li>
       </ul>
     </p-card>
   </div>

@@ -8,8 +8,11 @@ import { SalesModule } from './sales/sales.module';
 
 // change the app locale
 import spanish from '@angular/common/locales/es-CO';
+import german from '@angular/common/locales/de-CH';
 import { registerLocaleData } from '@angular/common';
+
 registerLocaleData(spanish);
+registerLocaleData(german);
 
 @NgModule({
   declarations: [AppComponent],
