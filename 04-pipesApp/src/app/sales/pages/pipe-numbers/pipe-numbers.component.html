@@ -1,1 +1,28 @@
-<p>pipe-numbers works!</p>
+<div class="text-layout">
+  <h1>Decimal and Percentage Pipe</h1>
+  <p>
+    Pipes included in Angular for Numbers. <br />
+    <i>value_expression | number [ : digitsInfo [ : locale ] ]</i>
+  </p>
+</div>
+
+<div class="grid">
+  <div class="col-4">
+    <p-card header="Net Sales" subheader="Current Year">
+      <h1>{{ netSales | number: "1.1-2" }}</h1>
+    </p-card>
+  </div>
+  <div class="col-4">
+    <p-card header="Brute Sales" subheader="Current Year">
+      <h1>{{ netSales | currency }}</h1>
+      <h1>{{ netSales | currency: "COP":"symbol":"1.0-0" }}</h1>
+      <h1>{{ netSales | currency: "EUR":"symbol-narrow" }}</h1>
+      <h1>{{ netSales | currency: "CHF":"symbol-narrow":"":"de-CH" }}</h1>
+    </p-card>
+  </div>
+  <div class="col-4">
+    <p-card header="Percentage Sales" subheader="Current Year">
+      <h1>{{ percentage | percent:'1.1-2' }}</h1>
+    </p-card>
+  </div>
+</div>
