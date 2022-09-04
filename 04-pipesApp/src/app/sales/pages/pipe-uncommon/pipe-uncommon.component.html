@@ -14,7 +14,9 @@
   </div>
   <div class="col-12 md:col-6">
     <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
-      Content.
+        <p *ngFor="let list of clients">
+            {{ list.people.length | i18nPlural: pluralMap }}.
+        </p>      
     </p-fieldset>
   </div>
 </div>
