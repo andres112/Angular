@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-pipe-uncommon',
@@ -25,11 +26,20 @@ export class PipeUncommonComponent {
   public clients = [
     { people: [] },
     { people: ['Maria'] },
-    { people: ['Pedro', 'Jesus','Maria'] },
+    { people: ['Pedro', 'Jesus', 'Maria', 'Lucas', 'Marcos'] },
   ];
   public pluralMap = {
-    '=0': 'Any client is waiting',
+    '=0': 'No clients are waiting',
     '=1': 'There is # client waiting',
     other: 'There are # clients waiting',
   };
+
+  // async pipe
+  public observable = interval(1000);
+  public promise = new Promise((resolve, reject) => {
+    setTimeout(
+      () => resolve('There is a promise that was resolved'),
+      5000
+    );
+  });
 }
