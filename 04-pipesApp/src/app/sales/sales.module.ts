@@ -5,6 +5,9 @@ import { PipeUncommonComponent } from './pages/pipe-uncommon/pipe-uncommon.compo
 import { PipeBasicsComponent } from './pages/pipe-basics/pipe-basics.component';
 import { PipeSortComponent } from './pages/pipe-sort/pipe-sort.component';
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
+import { UppercasePipe } from './pipes/uppercase.pipe';
+import { FlightPipe } from './pipes/flight.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -12,6 +15,9 @@ import { PrimeNgModule } from '../prime-ng/prime-ng.module';
     PipeUncommonComponent,
     PipeBasicsComponent,
     PipeSortComponent,
+    UppercasePipe,
+    FlightPipe,
+    SortPipe
   ],
   imports: [CommonModule, PrimeNgModule],
   exports: [
