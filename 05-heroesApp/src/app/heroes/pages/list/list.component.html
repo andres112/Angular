@@ -1,4 +1,15 @@
-<p>list works!</p>
-<pre *ngIf="heroes$ | async as heroes">
-    {{ heroes | json }}
-</pre>
+<h1>Heroes</h1>
+<mat-divider></mat-divider>
+
+<ng-container *ngIf="heroes$ | async as heroes">
+  <div
+    fxLayout="row wrap"
+    fxLayout.xs="column"
+    fxLayoutAlign="center"
+    fxLayoutGap="15px"
+  >
+    <div fxFlex="30" fxFlex.gt-lg="20" *ngFor="let hero of heroes">
+      <app-hero-card [hero]="hero"></app-hero-card>
+    </div>
+  </div>
+</ng-container>
