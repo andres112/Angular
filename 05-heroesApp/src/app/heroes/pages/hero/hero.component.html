@@ -1,5 +1,25 @@
 <ng-container *ngIf="heroInfo$ | async as hero; else loadingContainer">
-  {{ hero | json }}
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px">
+    <div fxFlex="50">
+      <h1>
+        {{ hero.superhero }}
+        <small *ngIf="hero.alter_ego">- {{ hero.alter_ego }}</small>
+      </h1>
+      <mat-divider></mat-divider>
+      <img [src]="hero | image" [alt]="hero.superhero" mat-card-image />
+    </div>
+    <div fxFlex="50">
+      <h1>{{ hero.publisher }}</h1>
+      <mat-divider></mat-divider>
+      <mat-list>
+        <mat-list-item>{{ hero.first_appearance }}</mat-list-item>
+        <mat-list-item>{{ hero.characters }}</mat-list-item>
+        <mat-list-item>{{ hero.publisher }}</mat-list-item>
+        <mat-list-item>{{ hero.alter_ego }}</mat-list-item>
+      </mat-list>
+      <button mat-button color="warn" routerLink="/heroes/list">Return</button>
+    </div>
+  </div>
 </ng-container>
 
 <ng-template #loadingContainer>
