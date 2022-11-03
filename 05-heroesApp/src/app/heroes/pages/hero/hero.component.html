@@ -1,1 +1,11 @@
-<p>hero works!</p>
+<ng-container *ngIf="heroInfo$ | async as hero; else loadingContainer">
+  {{ hero | json }}
+</ng-container>
+
+<ng-template #loadingContainer>
+  <mat-grid-list cols="1">
+    <mat-grid-tile>
+      <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-template>
