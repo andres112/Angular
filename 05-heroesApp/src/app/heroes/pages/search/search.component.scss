@@ -1,0 +1,14 @@
+.full-width {
+  width: 100%;
+}
+
+.result-container {
+  display: block;
+  width: 80vw;
+  margin: auto;
+
+  $breakpoint-tablet: 768px;
+  @media (min-width: $breakpoint-tablet) {
+    width: 50vw;
+  }
+}

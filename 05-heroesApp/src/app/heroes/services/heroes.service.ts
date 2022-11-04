@@ -19,4 +19,8 @@ export class HeroesService {
     // with simulated delay of 1 second
     return this.http.get<Hero>(this.baseUrl + `heroes/${id}`).pipe(delay(1000));
   }
+
+  public getSuggestions(term: string): Observable<Hero[]> {
+    return this.http.get<Hero[]>(this.baseUrl + `heroes?q=${term}&_limit=6`);
+  }
 }

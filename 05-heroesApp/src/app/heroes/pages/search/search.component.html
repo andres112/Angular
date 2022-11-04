@@ -1,30 +1,43 @@
 <div fxLayout="column">
-  <div>
-    <h1>Heroes Searching</h1>
-    <mat-divider></mat-divider>
-  </div>
-  <div>
-    <form class="example-form" style='margin-top:20px'>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Hero</mat-label>
-        <input
-          type="text"
-          placeholder="Pick one"
-          aria-label="Number"
-          matInput
-          [(ngModel)]="term"
-          [matAutocomplete]="auto"
-          (input)="searching()"
-        />
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option
-            *ngFor="let hero of heroes$ | async"
-            [value]="hero"
-          >
+  <h1>Heroes Searching</h1>
+  <mat-divider></mat-divider>
+</div>
+
+<div fxLayout="column">
+  <form class="example-form" style="margin-top: 20px">
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Hero</mat-label>
+      <input
+        type="text"
+        placeholder="Type and Select"
+        aria-label="Number"
+        matInput
+        [(ngModel)]="term"
+        [matAutocomplete]="auto"
+        (input)="searching()"
+        [ngModelOptions]="{ standalone: true }"
+      />
+
+      <mat-autocomplete
+        autoActiveFirstOption
+        #auto="matAutocomplete"
+        (optionSelected)="optionSelected($event)"
+      >
+        <ng-container *ngIf="heroes$ | async as heroes">
+          <mat-option *ngFor="let hero of heroes" [value]="hero">
             {{ hero.superhero }}
           </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-    </form>
-  </div>
+          <mat-option *ngIf="heroes.length === 0" value="" disabled>
+            No suggestions
+          </mat-option>
+        </ng-container>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
 </div>
+
+<ng-container *ngIf="selectedHero$ | async as selectedHero">
+  <section class="result-container">
+    <app-hero-card [hero]="selectedHero"></app-hero-card>
+  </section>
+</ng-container>
