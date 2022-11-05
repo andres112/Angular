@@ -42,6 +42,16 @@
       <mat-icon>save</mat-icon>
       Save
     </button>
+    <button
+      mat-raised-button
+      color="warn"
+      class="save-button"
+      (click)="onDelete()"
+      *ngIf="hero.id"
+    >
+      <mat-icon>delete</mat-icon>
+      Delete
+    </button>
   </div>
   <div fxFlex="50">
     <img [src]="hero | image" [alt]="hero.superhero" mat-card-image />

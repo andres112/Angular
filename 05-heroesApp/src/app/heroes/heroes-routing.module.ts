@@ -31,6 +31,7 @@ const routes: Routes = [
         path: ':id',
         component: HeroComponent,
       },
+      { path: '**', redirectTo: 'list' },
     ],
   },
 ];

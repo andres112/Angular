@@ -3,7 +3,7 @@ import { take } from 'rxjs';
 import { Hero } from '../../interfaces/heroes.model';
 import { HeroesService } from '../../services/heroes.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { filter, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add',
@@ -19,16 +19,19 @@ export class AddComponent implements OnInit {
     private router: Router
   ) {}
 
-  public get title(): string{
-    if(!!this.hero.id){
-      return 'Edit ' + this.hero.superhero
+  public get title(): string {
+    if (!!this.hero.id) {
+      return 'Edit ' + this.hero.superhero;
     }
-    return 'Add New Hero'
+    return 'Add New Hero';
   }
 
   ngOnInit(): void {
     this.activatedRoute.params
-      .pipe(switchMap(({ id }) => this.heroesService.getHeroById(id)))
+      .pipe(
+        filter(({ id }) => id),
+        switchMap(({ id }) => this.heroesService.getHeroById(id))
+      )
       .subscribe((hero) => (this.hero = hero));
   }
 
@@ -46,5 +49,12 @@ export class AddComponent implements OnInit {
       .addHero(this.hero)
       .pipe(take(1))
       .subscribe((hero) => this.router.navigate(['/heroes/edit', hero.id]));
+  }
+
+  public onDelete(): void {
+    this.heroesService
+      .deleteHero(this.hero.id!)
+      .pipe(take(1))
+      .subscribe(() => this.router.navigate(['/heroes']));
   }
 }

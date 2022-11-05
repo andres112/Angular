@@ -13,14 +13,6 @@
   ],
   "heroes": [
     {
-      "id": "ch-chapulin",
-      "superhero": "Chapulin Colorado",
-      "publisher": "Televisa",
-      "alter_ego": "Chespirito",
-      "first_appearance": "1973",
-      "characters": "Chespirito"
-    },
-    {
       "id": "dc-batman",
       "superhero": "Batman",
       "publisher": "DC Comics",
@@ -188,6 +180,15 @@
       "characters": "Raichu, Pichu",
       "publisher": "Game Freak and Nintendo",
       "id": "R0k90Rq"
+    },
+    {
+      "superhero": "He-Man",
+      "alter_ego": "Prince Adam",
+      "first_appearance": "Master of Universe 1981",
+      "characters": "He-Man, Prince Adam, Musclor",
+      "publisher": "DC Comics",
+      "alt_img": "https://media.gq.com.mx/photos/620d33bc43f71a078a3552ca/1:1/w_1361,h_1361,c_limit/he%20man.jpg",
+      "id": "3WFWAPG"
     }
   ]
 }
