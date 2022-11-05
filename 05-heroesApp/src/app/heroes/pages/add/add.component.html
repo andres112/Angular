@@ -1,6 +1,11 @@
 <h1>{{ title }}</h1>
 <mat-divider></mat-divider>
-<div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="40px" style='margin-top: 30px;'>
+<div
+  fxLayout="row"
+  fxLayout.lt-sm="column"
+  fxLayoutGap="40px"
+  style="margin-top: 30px"
+>
   <div fxFlex="50" fxLayout="column">
     <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap.gt-sm="40px">
       <mat-form-field fxFlex="100">
@@ -54,6 +59,10 @@
     </button>
   </div>
   <div fxFlex="50">
-    <img [src]="hero | image" [alt]="hero.superhero" mat-card-image />
+    <img
+      [src]="hero.alt_img ?? (hero | image)"
+      [alt]="hero.superhero"
+      mat-card-image
+    />
   </div>
 </div>
