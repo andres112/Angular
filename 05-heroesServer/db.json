@@ -179,6 +179,15 @@
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48",
       "characters": "Norrin Radd"
+    },
+    {
+      "alt_img": "https://cdn.pixabay.com/photo/2020/08/29/16/08/pikachu-5527379_1280.jpg",
+      "superhero": "Pikachu",
+      "alter_ego": "Pokemon",
+      "first_appearance": "Pokemon Red and Green 1996 Japan",
+      "characters": "Raichu, Pichu",
+      "publisher": "Game Freak and Nintendo",
+      "id": "R0k90Rq"
     }
   ]
 }

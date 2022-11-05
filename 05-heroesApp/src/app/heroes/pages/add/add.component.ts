@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { take } from 'rxjs';
 import { Hero } from '../../interfaces/heroes.model';
+import { HeroesService } from '../../services/heroes.service';
 
 @Component({
   selector: 'app-add',
@@ -8,7 +10,8 @@ import { Hero } from '../../interfaces/heroes.model';
 })
 export class AddComponent implements OnInit {
   public hero = {} as Hero;
-  constructor() {}
+
+  constructor(private heroesService: HeroesService) {}
 
   ngOnInit(): void {}
 
@@ -16,5 +19,6 @@ export class AddComponent implements OnInit {
     if (this.hero.superhero.trim().length === 0) {
       return;
     }
+    this.heroesService.addHero(this.hero).pipe(take(1)).subscribe();
   }
 }

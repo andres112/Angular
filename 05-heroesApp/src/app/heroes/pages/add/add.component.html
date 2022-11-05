@@ -34,6 +34,7 @@
     </button>
   </div>
   <div fxFlex="50">
+    {{hero | json}}
     <img [src]="hero | image" [alt]="hero.superhero" mat-card-image />
   </div>
 </div>
