@@ -1,6 +1,6 @@
 <mat-card *ngIf="hero">
   <mat-card-header>
-    <mat-card-title>{{ hero.superhero }}</mat-card-title>
+    <mat-card-title class='hero-name'>{{ hero.superhero }}</mat-card-title>
     <mat-card-subtitle>{{ hero.alter_ego }}</mat-card-subtitle>
   </mat-card-header>
   <img [src]="hero | image" mat-card-image />
