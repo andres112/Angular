@@ -11,7 +11,7 @@ export class HomeComponent {
   constructor(private router: Router, public authService:AuthService) {}
 
   public logout() {
-    console.log('logout');
+    this.authService.logout(); 
     this.router.navigate(['/auth']);
   }
 }
