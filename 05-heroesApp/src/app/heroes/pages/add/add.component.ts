@@ -5,7 +5,6 @@ import { HeroesService } from '../../services/heroes.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter, switchMap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add',
@@ -63,7 +62,7 @@ export class AddComponent implements OnInit {
       .pipe(take(1))
       .subscribe(() => {
         this.router.navigate(['/heroes']);
-        this.showSnackBar('Hero created!');
+        this.showSnackBar('Hero deleted!');
       });
   }
 
