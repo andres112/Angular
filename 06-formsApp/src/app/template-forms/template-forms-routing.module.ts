@@ -6,4 +6,4 @@ const routes: Routes = [];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
 })
-export class TemplateRoutingModule { }
+export class TemplateFormsRoutingModule { }

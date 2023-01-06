@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ReactiveRoutingModule } from './reactive-routing.module';
+import { ReactiveFormsRoutingModule } from './reactive-forms-routing.module';
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    ReactiveRoutingModule
+    ReactiveFormsRoutingModule
   ]
 })
-export class ReactiveModule { }
+export class ReactiveFormsModule { }

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TemplateRoutingModule } from './template-routing.module';
+import { TemplateFormsRoutingModule } from './template-forms-routing.module';
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    TemplateRoutingModule
+    TemplateFormsRoutingModule
   ]
 })
-export class TemplateModule { }
+export class TemplateFormsModule { }
