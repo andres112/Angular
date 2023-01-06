@@ -1,1 +1,38 @@
-<p>basics works!</p>
+<h2>Template Form: Basics</h2>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <form>
+      <div class="mb-3">
+        <label for="templateBasicProduct" class="form-label">Product</label>
+        <input
+          type="text"
+          class="form-control"
+          id="templateBasicProduct"
+          aria-describedby="productNameHelp"
+        />
+        <div id="productNameHelp" class="form-text text-warning">
+          Must be at least 3 characters long.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="templateBasicsPrice" class="form-label">Price</label>
+        <div class="input-group mb-3" id='templateBasicsPrice'>
+          <span class="input-group-text">$</span>
+          <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+          <span class="input-group-text">.00</span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="templateBasicRemain" class="form-label">Remaining</label>
+        <input
+          type="number"
+          class="form-control"
+          id="templateBasicRemain"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary float-end">Submit</button>
+    </form>
+  </div>
+</div>
