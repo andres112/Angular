@@ -1,10 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'template-forms',
+    loadChildren: () =>
+      import('./template-forms/template-forms.module').then(
+        (m) => m.TemplateFormsModule
+      ),
+  },
+  {
+    path: 'reactive-forms',
+    loadChildren: () =>
+      import('./reactive-forms/reactive-forms.module').then(
+        (m) => m.ReactiveFormsModule
+      ),
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
