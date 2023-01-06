@@ -16,6 +16,10 @@ const routes: Routes = [
         (m) => m.ReactiveFormsModule
       ),
   },
+  {
+    path:'**',
+    redirectTo:'template-forms'
+  }
 ];
 
 @NgModule({
