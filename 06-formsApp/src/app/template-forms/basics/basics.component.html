@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="col">
-    <form>
+    <form (ngSubmit)="save(templateBasicForm)" #templateBasicForm="ngForm">
       <div class="mb-3">
         <label for="templateBasicProduct" class="form-label">Product</label>
         <input
@@ -11,6 +11,9 @@
           class="form-control"
           id="templateBasicProduct"
           aria-describedby="productNameHelp"
+          ngModel
+          name="product"
+          required
         />
         <div id="productNameHelp" class="form-text text-warning">
           Must be at least 3 characters long.
@@ -18,9 +21,15 @@
       </div>
       <div class="mb-3">
         <label for="templateBasicsPrice" class="form-label">Price</label>
-        <div class="input-group mb-3" id='templateBasicsPrice'>
+        <div class="input-group mb-3" id="templateBasicsPrice">
           <span class="input-group-text">$</span>
-          <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+          <input
+            type="number"
+            class="form-control"
+            aria-label="Amount (to the nearest dollar)"
+            ngModel
+            name="price"
+          />
           <span class="input-group-text">.00</span>
         </div>
       </div>
@@ -30,9 +39,20 @@
           type="number"
           class="form-control"
           id="templateBasicRemain"
+          ngModel
+          name="remain"
         />
       </div>
       <button type="submit" class="btn btn-primary float-end">Submit</button>
     </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <h5>Valid</h5>
+    <pre>{{ templateBasicForm.valid }}</pre>
+    <h5>Form Value</h5>
+    <pre>{{ templateBasicForm.value | json }}</pre>
   </div>
 </div>
