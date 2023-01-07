@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,28 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./basics.component.scss'],
 })
 export class BasicsComponent {
-  public save(data: NgForm): void {
-    console.log(data.value);
+  @ViewChild('templateBasicForm') myForm!: NgForm;
+
+  public validProduct(): boolean {
+    return (
+      this.myForm?.controls['product']?.invalid &&
+      this.myForm?.controls['product']?.touched
+    );
+  }
+
+  public validPrice():boolean {
+    return (
+      this.myForm?.value.price < 0 ||
+      this.myForm?.controls['price']?.invalid &&
+      this.myForm?.controls['price']?.touched
+    );
+  }
+
+  public save(): void {
+    if(this.myForm.invalid) {
+      this.myForm.control.markAllAsTouched();
+      return;
+    }
+    console.log(this.myForm);
   }
 }
