@@ -1,6 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm, ValidationErrors } from '@angular/forms';
 
+const InitialForm = {
+  product: '',
+  price: 0,
+  stock: 0,
+};
+
 @Component({
   selector: 'app-basics',
   templateUrl: './basics.component.html',
@@ -8,6 +14,7 @@ import { NgForm, ValidationErrors } from '@angular/forms';
 })
 export class BasicsComponent {
   @ViewChild('templateBasicForm') myForm!: NgForm;
+  public initialForm = InitialForm;
 
   public validProduct(): boolean {
     return (
@@ -44,10 +51,6 @@ export class BasicsComponent {
   }
 
   public resetForm(): void {
-    this.myForm.resetForm({
-      product: '',
-      price: 0,
-      stock: 0,
-    });
+    this.myForm.resetForm(InitialForm);
   }
 }
