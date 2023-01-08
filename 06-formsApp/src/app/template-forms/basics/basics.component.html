@@ -45,23 +45,30 @@
         </div>
       </div>
       <div class="mb-3">
-        <label for="templateBasicRemain" class="form-label">Remaining</label>
+        <label for="templateBasicStock" class="form-label">Stock</label>
         <!-- This input validate with directives -->
         <input
           type="number"
           class="form-control"
-          id="templateBasicRemain"
+          id="templateBasicStock"
           ngModel
-          name="remain"
+          name="stock"
           customMin
           [minValue]="0"
           required
         />
+        <div id="priceHelp" class="form-text text-warning" *ngIf="validStock() as errors">
+          <span *ngIf="errors['customMin']">Invalid value.</span> 
+          <span *ngIf="errors['required']">Value required.</span> 
+        </div>
       </div>
+      <span class='text-button' (click)="resetForm()">Clear</span>
       <button type="submit" class="btn btn-primary float-end">Submit</button>
     </form>
   </div>
 </div>
+
+
 
 <div class="row">
   <div class="col">

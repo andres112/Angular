@@ -39,3 +39,14 @@ li[routerLinkActive] {
     color: black;
   }
 }
+
+span{
+  &.text-button{
+    cursor: pointer;
+    text-decoration: solid underline;
+    color: rgb(0, 145, 255);
+    &:hover{
+      color: #0022ff;
+    }
+  }
+}
