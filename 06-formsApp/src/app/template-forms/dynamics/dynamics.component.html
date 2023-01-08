@@ -8,8 +8,8 @@
       type="text"
       class="form-control"
       id="templateDynamicName"
+      [(ngModel)]="person.name"
       aria-describedby="nameHelp"
-      ngModel
       name="name"
       required
     />
@@ -26,15 +26,26 @@
         class="form-control"
         id="templateDynamicAdd"
         placeholder="Add favorite game"
+        ngModel
+        name='favorite'
       />
-      <button class="btn btn-outline-success py-0" type="button">
+      <button class="btn btn-outline-success py-0" type="button" (click)="addFavorite()">
         <i class="bi bi-plus"></i>
       </button>
     </div>
   </div>
   <!-- List of games -->
   <div class="mb-3">
-    <label for="templateDynamicAdd" class="form-label"><i class="bi bi-star"></i> Favorites</label>
+    <label for="templateDynamicAdd" class="form-label">
+      <i class="bi bi-star"></i> Favorites
+    </label>
+    <input
+      *ngFor="let game of person.favorites; let id = index"
+      class="form-control-plaintext mb-1"
+      [(ngModel)]="game.name"
+      name="favorite_{{ id }}"
+      readonly
+    />
   </div>
 
   <div class="d-flex justify-content-center">
@@ -48,3 +59,10 @@
     </button>
   </div>
 </form>
+
+
+
+<h3>Form Value</h3>
+<pre>
+    {{ person | json }}
+</pre>

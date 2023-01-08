@@ -11,7 +11,7 @@
           class="form-control"
           id="templateBasicProduct"
           aria-describedby="productNameHelp"
-          [ngModel]='initialForm.product'
+          [(ngModel)]='initialForm.product'
           name="product"
           required
           minlength="3"
@@ -35,7 +35,7 @@
             aria-label="Amount (to the nearest dollar)"
             required
             min="0"
-            [ngModel]='initialForm.price'
+            [(ngModel)]='initialForm.price'
             name="price"
           />
           <span class="input-group-text">.00</span>
@@ -51,7 +51,7 @@
           type="number"
           class="form-control"
           id="templateBasicStock"
-          [ngModel]='initialForm.stock'
+          [(ngModel)]='initialForm.stock'
           name="stock"
           customMin
           [minValue]="0"
@@ -94,6 +94,6 @@
       >
     </h5>
     <h5>Value</h5>
-    <pre>{{ templateBasicForm.value | json }}</pre>
+    <pre>{{ initialForm | json }}</pre>
   </div>
 </div>
