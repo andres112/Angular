@@ -27,9 +27,13 @@
         id="templateDynamicAdd"
         placeholder="Add favorite game"
         ngModel
-        name='favorite'
+        name="favorite"
       />
-      <button class="btn btn-outline-success py-0" type="button" (click)="addFavorite()">
+      <button
+        class="btn btn-outline-success py-0"
+        type="button"
+        (click)="addFavorite()"
+      >
         <i class="bi bi-plus"></i>
       </button>
     </div>
@@ -39,13 +43,24 @@
     <label for="templateDynamicAdd" class="form-label">
       <i class="bi bi-star"></i> Favorites
     </label>
-    <input
+    <div
+      class="input-group mb-1"
       *ngFor="let game of person.favorites; let id = index"
-      class="form-control-plaintext mb-1"
-      [(ngModel)]="game.name"
-      name="favorite_{{ id }}"
-      readonly
-    />
+    >
+      <input
+        class="form-control"
+        [(ngModel)]="game.name"
+        name="favorite_{{ id }}"
+        readonly
+      />
+      <button
+        class="btn btn-outline-danger py-0"
+        type="button"
+        (click)="removeFavorite(id)"
+      >
+        <i class="bi bi-trash"></i>
+      </button>
+    </div>
   </div>
 
   <div class="d-flex justify-content-center">
@@ -59,8 +74,6 @@
     </button>
   </div>
 </form>
-
-
 
 <h3>Form Value</h3>
 <pre>

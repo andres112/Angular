@@ -41,6 +41,10 @@ export class DynamicsComponent implements OnInit {
     this.myForm?.controls['favorite']?.reset();
   }
 
+  public removeFavorite(index: number): void {
+    this.person.favorites.splice(index, 1);
+  }
+
   public save(): void {
     console.log('Save');
   }
