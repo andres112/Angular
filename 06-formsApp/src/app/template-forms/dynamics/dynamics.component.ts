@@ -6,7 +6,7 @@ interface Person {
   favorites: Favorite[];
 }
 interface Favorite {
-  id: number;
+  id: string;
   name: string;
   selected: boolean;
 }
@@ -33,7 +33,7 @@ export class DynamicsComponent implements OnInit {
 
   public addFavorite(): void {
     this.person.favorites.push({
-      id: this.person.favorites.length + 1,
+      id: Math.random().toString(36).slice(2, 12),
       name: this.myForm?.value.favorite,
       selected: false,
     });
