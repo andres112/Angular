@@ -11,6 +11,9 @@
           type="radio"
           name="RadioButtonGender"
           id="maleOption"
+          value="f"
+          checked
+          [(ngModel)]="person.gender"
         />
         <label class="form-check-label" for="maleOption"> Female </label>
       </div>
@@ -20,6 +23,8 @@
           type="radio"
           name="RadioButtonGender"
           id="femaleOption"
+          value="m"
+          [(ngModel)]="person.gender"
         />
         <label class="form-check-label" for="femaleOption"> Male </label>
       </div>
@@ -29,19 +34,24 @@
           type="radio"
           name="RadioButtonGender"
           id="alienOption"
+          value="a"
+          [(ngModel)]="person.gender"
         />
         <label class="form-check-label" for="alienOption"> Alien </label>
       </div>
     </div>
 
-    <div class="col-12 d-inline-flex align-items-center mt-5" id="gender">
-      <label for="gender" class="me-3"> Receive Notifications </label>
-      <div class="form-check form-switch">
+    <div class="col-12 d-inline-flex align-items-center mt-5">
+      <label for="notifications" class="me-3"> Receive Notifications </label>
+      <div class="form-switch" id="notifications">
         <input
           class="form-check-input"
           type="checkbox"
           role="switch"
           id="notifications"
+          [(ngModel)]="person.notifications"
+          name="notifications"
+          required
         />
         <label class="form-check-label" for="notifications"></label>
       </div>
@@ -57,3 +67,12 @@
     </button>
   </div>
 </form>
+
+<h4>Form content</h4>
+
+<pre>
+    {{ templateSwitchesForm.value | json }}
+</pre>
+
+<h4>Form status</h4>
+<span>{{ templateSwitchesForm.invalid }}</span>
