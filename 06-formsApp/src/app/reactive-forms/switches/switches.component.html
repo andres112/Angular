@@ -1,1 +1,71 @@
-<p>switches works!</p>
+<h2>Reactive Form: Switches</h2>
+<hr />
+
+<form>
+  <div class="row mb-3">
+    <label for="gender" class="h4 funny-font">Gender</label>
+    <div class="col" id="gender">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="RadioButtonGender"
+          id="maleOption"
+          value="f"
+          checked
+        />
+        <label class="form-check-label" for="maleOption"> Female </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="RadioButtonGender"
+          id="femaleOption"
+          value="m"
+        />
+        <label class="form-check-label" for="femaleOption"> Male </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="RadioButtonGender"
+          id="alienOption"
+          value="a"
+        />
+        <label class="form-check-label" for="alienOption"> Alien </label>
+      </div>
+    </div>
+
+    <div class="col-12 d-inline-flex align-items-center mt-5">
+      <label for="notifications" class="me-3"> Receive Notifications </label>
+      <div class="form-switch" id="notifications">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          required
+        />
+        <label class="form-check-label" for="notifications"></label>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <button
+      type="button"
+      class="btn btn-info text-white"
+    >
+      Submit
+    </button>
+  </div>
+</form>
+
+<!-- <h4>Form content</h4>
+
+<pre>
+    {{ templateSwitchesForm.value | json }}
+</pre>
+
+<h4>Form status</h4>
+<span>{{ templateSwitchesForm.invalid }}</span> -->
