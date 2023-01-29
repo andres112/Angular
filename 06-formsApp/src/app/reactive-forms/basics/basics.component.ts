@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-basics',
@@ -7,7 +7,19 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./basics.component.scss'],
 })
 export class BasicsComponent {
-  public myForm: FormGroup = new FormGroup({
-    product: new FormControl('RTX3070'),
+  //FormControl approach
+  // public myForm: FormGroup = new FormGroup({
+  //   product: new FormControl('RTX3070'),
+  //   price: new FormControl(10),
+  //   stock: new FormControl(5),
+  // });
+
+  // FormBuilder approach
+  public myForm: FormGroup = this.fb.group({
+    product: ['RTX3070'],
+    price: [10],
+    stock: [5],
   });
+
+  constructor(private fb: FormBuilder) {}
 }

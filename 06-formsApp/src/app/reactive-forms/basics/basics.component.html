@@ -25,6 +25,7 @@
             type="number"
             class="form-control"
             aria-label="Amount (to the nearest dollar)"
+            formControlName="price"
           />
           <span class="input-group-text">.00</span>
         </div>
@@ -33,7 +34,7 @@
       <div class="mb-3">
         <label for="templateBasicStock" class="form-label">Stock</label>
         <!-- This input validate with directives -->
-        <input type="number" class="form-control" />
+        <input type="number" class="form-control" formControlName="stock"/>
         <!-- <div
           id="priceHelp"
           class="form-text text-warning"
