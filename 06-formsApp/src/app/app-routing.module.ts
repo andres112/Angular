@@ -13,7 +13,7 @@ const routes: Routes = [
     path: 'reactive-forms',
     loadChildren: () =>
       import('./reactive-forms/reactive-forms.module').then(
-        (m) => m.ReactiveFormsModule
+        (m) => m.ReactiveModule
       ),
   },
   {

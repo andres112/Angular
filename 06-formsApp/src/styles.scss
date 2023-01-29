@@ -43,6 +43,16 @@ li[routerLinkActive] {
   }
 }
 
+.reactive {
+  &:hover {
+    background-color: #ffabab !important;
+  }
+  &.active {
+    background-color: #ff5454;
+    border-color: #ff5454;
+  }
+}
+
 span{
   &.text-button{
     cursor: pointer;

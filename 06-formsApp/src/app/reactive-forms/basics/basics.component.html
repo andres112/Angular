@@ -3,18 +3,16 @@
 
 <div class="row">
   <div class="col">
-    <form>
+    <form [formGroup]="myForm">
       <div class="mb-3">
         <label for="templateBasicProduct" class="form-label">Product</label>
         <input
           type="text"
           class="form-control"
+          formControlName="product"
           aria-describedby="productNameHelp"
         />
-        <div
-          id="productNameHelp"
-          class="form-text text-warning"
-        >
+        <div id="productNameHelp" class="form-text text-warning">
           Must be at least 3 characters long.
         </div>
       </div>
@@ -30,17 +28,12 @@
           />
           <span class="input-group-text">.00</span>
         </div>
-        <div id="priceHelp" class="form-text text-warning">
-          Invalid price.
-        </div>
+        <div id="priceHelp" class="form-text text-warning">Invalid price.</div>
       </div>
       <div class="mb-3">
         <label for="templateBasicStock" class="form-label">Stock</label>
         <!-- This input validate with directives -->
-        <input
-          type="number"
-          class="form-control"
-        />
+        <input type="number" class="form-control" />
         <!-- <div
           id="priceHelp"
           class="form-text text-warning"
@@ -55,30 +48,29 @@
   </div>
 </div>
 
-<!-- <div class="row">
+<div class="row">
   <div class="col">
     <h5>
       Valid:
-      <span
-        [ngClass]="templateReactiveForm.valid ? 'text-success' : 'text-danger'"
-        >{{ templateReactiveForm.valid }}</span
-      >
+      <span [ngClass]="myForm.valid ? 'text-success' : 'text-danger'">{{
+        myForm.valid
+      }}</span>
     </h5>
     <h5>
       Pristine:
-      <span
-        [ngClass]="templateReactiveForm.pristine ? 'text-success' : 'text-danger'"
-        >{{ templateReactiveForm.pristine }}</span
-      >
+      <span [ngClass]="myForm.pristine ? 'text-success' : 'text-danger'">{{
+        myForm.pristine
+      }}</span>
     </h5>
     <h5>
       Touched:
-      <span
-        [ngClass]="templateReactiveForm.touched ? 'text-success' : 'text-danger'"
-        >{{ templateReactiveForm.touched }}</span
-      >
+      <span [ngClass]="myForm.touched ? 'text-success' : 'text-danger'">{{
+        myForm.touched
+      }}</span>
     </h5>
     <h5>Value</h5>
-    <pre>{{ initialForm | json }}</pre>
+    <pre>
+        {{ myForm.value | json }}
+    </pre>
   </div>
-</div> -->
+</div>
