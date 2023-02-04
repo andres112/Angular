@@ -1,14 +1,11 @@
 <h2>Reactive Form: Dynamics</h2>
 <hr />
 
-<form>
+<form [formGroup]="myDynamicForm" (submit)="save()">
   <div class="mb-3">
     <label for="templateDynamicName" class="form-label">Name</label>
-    <input
-      type="text"
-      class="form-control"
-    />
-    <span class="form-text text-danger-emphasis">
+    <input type="text" class="form-control" formControlName="name" />
+    <span class="form-text text-danger-emphasis" *ngIf="validateField('name')">
       Field required.
     </span>
   </div>
@@ -16,15 +13,8 @@
   <div class="mb-3">
     <label for="templateDynamicAdd" class="form-label">Addition</label>
     <div class="input-group mb-3" id="templateDynamicAdd">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Add favorite game"
-      />
-      <button
-        class="btn btn-outline-success py-0"
-        type="button"
-      >
+      <input type="text" class="form-control" placeholder="Add favorite game" />
+      <button class="btn btn-outline-success py-0" type="button">
         <i class="bi bi-plus"></i>
       </button>
     </div>
@@ -52,12 +42,6 @@
   </div>
 
   <div class="d-flex justify-content-center">
-    <button
-      type="button"
-      class="btn btn-success"
-    >
-      Submit
-    </button>
+    <button type="submit" class="btn btn-success">Submit</button>
   </div>
 </form>
-

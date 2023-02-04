@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="col">
-    <form [formGroup]="myForm">
+    <form [formGroup]="myForm" (submit)="save()">
       <div class="mb-3">
         <label for="templateBasicProduct" class="form-label">Product</label>
         <input
@@ -57,7 +57,6 @@
       <button
         type="submit"
         class="btn btn-primary float-end"
-        [disabled]="!myForm.valid"
       >
         Submit
       </button>

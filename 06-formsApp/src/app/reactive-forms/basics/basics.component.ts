@@ -21,9 +21,9 @@ export class BasicsComponent {
 
   // FormBuilder approach
   public myForm: FormGroup = this.fb.group({
-    product: ['', [Validators.required, Validators.minLength(3)]],
-    price: [10, [Validators.required, Validators.min(0)]],
-    stock: [5, [Validators.required, Validators.min(0)]],
+    product: [, [Validators.required, Validators.minLength(3)]],
+    price: [, [Validators.required, Validators.min(0)]],
+    stock: [, [Validators.required, Validators.min(0)]],
   });
 
   constructor(private fb: FormBuilder) {}
@@ -33,5 +33,14 @@ export class BasicsComponent {
       this.myForm.controls[field].errors &&
       this.myForm.controls[field].touched
     );
+  }
+
+  public save() {
+    if (this.myForm.invalid) {
+      this.myForm.markAllAsTouched();
+      return;
+    }
+    console.log(this.myForm.value);
+    this.myForm.reset();
   }
 }
