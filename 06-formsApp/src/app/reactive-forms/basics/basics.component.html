@@ -12,7 +12,11 @@
           formControlName="product"
           aria-describedby="productNameHelp"
         />
-        <div id="productNameHelp" class="form-text text-warning">
+        <div
+          id="productNameHelp"
+          class="form-text text-warning"
+          *ngIf="validateField('product')"
+        >
           Must be at least 3 characters long.
         </div>
       </div>
@@ -29,20 +33,26 @@
           />
           <span class="input-group-text">.00</span>
         </div>
-        <div id="priceHelp" class="form-text text-warning">Invalid price.</div>
+        <div
+          id="priceHelp"
+          class="form-text text-warning"
+          *ngIf="validateField('price')"
+        >
+          Invalid price.
+        </div>
       </div>
       <div class="mb-3">
         <label for="templateBasicStock" class="form-label">Stock</label>
         <!-- This input validate with directives -->
         <input type="number" class="form-control" formControlName="stock" />
-        <!-- <div
+        <div
           id="priceHelp"
           class="form-text text-warning"
-          *ngIf="validStock() as errors"
+          *ngIf="validateField('stock') as errors"
         >
-          <span *ngIf="errors['customMin']">Invalid value.</span>
-          <span *ngIf="errors['required']">Value required.</span>
-        </div> -->
+          <!-- <span *ngIf="errors['customMin']">Invalid value.</span> -->
+          <span *ngIf="validateField('stock') ">Value required.</span>
+        </div>
       </div>
       <button
         type="submit"
