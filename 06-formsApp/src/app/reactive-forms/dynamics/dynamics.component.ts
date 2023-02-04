@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
-import {
-  FormGroup,
-  FormBuilder,
-  FormGroupName,
-  Validators,
-  FormArray,
-} from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-dynamics',
@@ -15,36 +10,46 @@ import {
 export class DynamicsComponent {
   public myDynamicForm: FormGroup = this.formBuilder.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
-    favorite: [''],
     favorites: this.formBuilder.array(
       ['hogwarts', 'anno 1800'],
       [Validators.required, Validators.minLength(1)]
     ),
   });
+  public favorite: FormControl = this.formBuilder.control('', [
+    Validators.required,
+    Validators.minLength(1),
+  ]);
 
-  get favoritesArr() {
+  public get favoritesArr(): FormArray {
     return this.myDynamicForm.get('favorites') as FormArray;
   }
 
   constructor(private formBuilder: FormBuilder) {}
 
-  public validateField(field: string) {
-    return (
-      this.myDynamicForm.controls[field].errors &&
-      this.myDynamicForm.controls[field].touched
-    );
+  public validateField(field: string | FormControl) {
+    if (typeof field === 'string') {
+      return (
+        this.myDynamicForm.controls[field].errors &&
+        this.myDynamicForm.controls[field].touched
+      );
+    }
+    return field.invalid && field.touched;
   }
 
   public addFavorite(): void {
-    (this.myDynamicForm.get('favorites') as FormArray).value.push(
-      this.myDynamicForm.controls['favorite'].value
+    if (this.favorite.invalid) {
+      this.favorite.markAsTouched();
+      return;
+    }
+    // It's possible to use the getter to access the array
+    this.favoritesArr.push(
+      this.formBuilder.control(this.favorite.value, Validators.required)
     );
-    // reset the input only
-    this.myDynamicForm.controls['favorite']?.reset();
+    this.favorite.reset();
   }
 
   public removeFavorite(index: number): void {
-    (this.myDynamicForm.get('favorites') as FormArray).value.splice(index, 1);
+    this.favoritesArr.removeAt(index);
   }
 
   public save() {
@@ -53,6 +58,7 @@ export class DynamicsComponent {
       return;
     }
     console.log(this.myDynamicForm.value);
+    this.favoritesArr.clear();
     this.myDynamicForm.reset();
   }
 }

@@ -17,12 +17,22 @@
         type="text"
         class="form-control"
         placeholder="Add favorite game"
-        formControlName="favorite"
+        [formControl]="favorite"
       />
-      <button class="btn btn-outline-success py-0" type="button" (click)="addFavorite()">
+      <button
+        class="btn btn-outline-success py-0"
+        type="button"
+        (click)="addFavorite()"
+      >
         <i class="bi bi-plus"></i>
       </button>
     </div>
+    <span
+      class="form-text text-danger-emphasis"
+      *ngIf="validateField(favorite)"
+    >
+      Field required.
+    </span>
   </div>
   <!-- List of games -->
   <div class="mb-3">
@@ -35,7 +45,11 @@
         *ngFor="let fav of favoritesArr.controls; let i = index"
       >
         <input class="form-control" readonly formControlName="{{ i }}" />
-        <button class="btn btn-outline-danger py-0" type="button" (click)="removeFavorite(i)">
+        <button
+          class="btn btn-outline-danger py-0"
+          type="button"
+          (click)="removeFavorite(i)"
+        >
           <i class="bi bi-trash"></i>
         </button>
       </div>
@@ -58,7 +72,12 @@
   </div>
 </div>
 
-
 <pre>
   {{ myDynamicForm.value | json }}
+</pre>
+
+<h5>Favorite Control</h5>
+<pre>
+  {{ favorite.value | json }}
+  {{ favorite.valid | json }}
 </pre>
