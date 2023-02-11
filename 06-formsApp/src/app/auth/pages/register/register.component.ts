@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators, FormControl, ValidationErrors } from '@angular/forms';
+import {
+  FormBuilder,
+  Validators,
+  FormControl,
+  ValidationErrors,
+} from '@angular/forms';
+import { ValidatorService } from '../../shared/validators/validator.service';
 
 @Component({
   selector: 'app-register',
@@ -10,14 +16,11 @@ export class RegisterComponent {
   public registerForm = this.fb.group({
     name: [
       '',
-      [
-        Validators.required,
-        Validators.pattern(/^\b\w{2,}\b(?:\s+\b\w{2,}\b){1,5}$/),
-      ],
+      [Validators.required, Validators.pattern(this.validators.namePattern)],
     ],
     email: [
       '',
-      [Validators.required, Validators.pattern(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/)],
+      [Validators.required, Validators.pattern(this.validators.emailPattern)],
     ],
     username: [
       '',
@@ -25,27 +28,14 @@ export class RegisterComponent {
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(20),
-        this.validateUsername,
+        this.validators.validateUsername,
       ],
     ],
     password: [''],
     repeatPassword: [''],
   });
 
-  constructor(private fb: FormBuilder) {}
-
-  private validateUsername(control: FormControl): ValidationErrors{
-    const value = control.value?.trim();
-    console.log(value);
-    
-    // check if the username follow this pattern AnDrEs or aNdReS
-    if (!/^(?:([A-Z][a-z])|([a-z][A-Z]))+$/.test(value)) {
-      return {
-        errorPattern: true,
-      };
-    }
-    return {};
-  }
+  constructor(private fb: FormBuilder, private validators: ValidatorService) {}
 
   public isValidField(field: string): boolean {
     return !!(
