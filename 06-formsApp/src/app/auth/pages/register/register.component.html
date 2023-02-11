@@ -1,1 +1,86 @@
-<p>register works!</p>
+<h1>Reactive Validations</h1>
+<h2>Register Form</h2>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <form [formGroup]="registerForm">
+      <!-- Name -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="Full Name"
+          formControlName="name"
+        />
+        <span class="small text-danger-emphasis"
+          >Should be in format of 1st name and lastname</span
+        >
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Email"
+        />
+        <span class="small text-danger-emphasis">Invalid email</span>
+      </div>
+
+      <!-- Username -->
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          placeholder="Username"
+        />
+        <span class="small text-danger-emphasis">This field is required</span>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Password"
+        />
+        <span class="small text-danger-emphasis"
+          >Password must contain ...</span
+        >
+        <span class="small text-danger-emphasis">Password not match</span>
+      </div>
+
+      <!-- Repeat Password -->
+      <div class="mb-3">
+        <label for="repeat_password" class="form-label">Confirm Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="repeat_password"
+          placeholder="Confirm Password"
+        />
+        <span class="small text-danger-emphasis"
+          >Confirm Password not match</span
+        >
+      </div>
+    </form>
+  </div>
+</div>
+
+<hr />
+<h2>Data Control</h2>
+<h3>
+  Form Valid:
+  <span [class]="registerForm.valid ? 'text-success' : 'text-danger'"
+    >{{ registerForm.valid }}
+  </span>
+</h3>
