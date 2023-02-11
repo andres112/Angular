@@ -34,6 +34,10 @@ export class SwitchesComponent implements OnInit {
   }
 
   public save(): void {
+    if(this.myForm.invalid){ 
+      this.myForm.markAllAsTouched();
+      return;
+    }
     const formValue = { ...this.myForm.value };
     delete formValue.terms;
     this.person = formValue;

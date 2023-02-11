@@ -53,6 +53,16 @@ li[routerLinkActive] {
   }
 }
 
+.auth-menu {
+  &:hover {
+    background-color: #b8ffab !important;
+  }
+  &.active {
+    background-color: #359615;
+    border-color: #7fff54;
+  }
+}
+
 span{
   &.text-button{
     cursor: pointer;

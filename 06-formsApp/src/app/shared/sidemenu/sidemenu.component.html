@@ -26,3 +26,18 @@
     </li>
   </ul>
 </section>
+
+<section class="mt-4">
+  <h2>Validations</h2>
+  <hr />
+  <ul class="list-group">
+    <li
+      *ngFor="let item of authMenu"
+      class="list-group-item auth-menu"
+      [routerLink]="[item.path]"
+      routerLinkActive="active"
+    >
+      {{ item.name }}
+    </li>
+  </ul>
+</section>

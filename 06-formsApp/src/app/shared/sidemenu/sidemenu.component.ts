@@ -22,7 +22,7 @@ export class SidemenuComponent {
     {
       name: 'Switches',
       path: '/template-forms/switches',
-    }
+    },
   ];
   public reactiveMenu: MenuItem[] = [
     {
@@ -36,6 +36,16 @@ export class SidemenuComponent {
     {
       name: 'Switches',
       path: '/reactive-forms/switches',
-    }
+    },
+  ];
+  public authMenu: MenuItem[] = [
+    {
+      name: 'Login',
+      path: '/auth/login',
+    },
+    {
+      name: 'Register',
+      path: '/auth/register',
+    },
   ];
 }
