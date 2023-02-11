@@ -4,10 +4,12 @@
 
 <div class="row">
   <div class="col">
-    <form [formGroup]="registerForm">
+    <form [formGroup]="registerForm" (ngSubmit)="send()">
       <!-- Name -->
       <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
+        <label for="name" class="form-label"
+          >Name <span class="text-danger">*</span></label
+        >
         <input
           type="text"
           class="form-control"
@@ -15,21 +17,26 @@
           placeholder="Full Name"
           formControlName="name"
         />
-        <span class="small text-danger-emphasis"
-          >Should be in format of 1st name and lastname</span
+        <span *ngIf="isValidField('name')" class="small text-danger-emphasis"
+          >Name must have at least name and last-name</span
         >
       </div>
 
       <!-- Email -->
       <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
+        <label for="email" class="form-label"
+          >Email <span class="text-danger">*</span></label
+        >
         <input
           type="email"
           class="form-control"
           id="email"
           placeholder="Email"
+          formControlName="email"
         />
-        <span class="small text-danger-emphasis">Invalid email</span>
+        <span *ngIf="isValidField('email')" class="small text-danger-emphasis"
+          >Invalid email</span
+        >
       </div>
 
       <!-- Username -->
@@ -40,8 +47,20 @@
           class="form-control"
           id="username"
           placeholder="Username"
+          formControlName="username"
         />
-        <span class="small text-danger-emphasis">This field is required</span>
+        <div *ngIf="isValidField('username')">
+          <span
+            *ngIf="registerForm.controls.username.errors?.['required']"
+            class="small text-danger-emphasis"
+            >This field is required</span
+          >
+          <span
+            *ngIf="registerForm.controls.username.errors?.['errorPattern']"
+            class="small text-danger-emphasis"
+            >Username must follow alternating patter. eg. UsEr or uSeR</span
+          >
+        </div>
       </div>
 
       <!-- Password -->
@@ -72,6 +91,11 @@
           >Confirm Password not match</span
         >
       </div>
+
+      <!-- Submit -->
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
     </form>
   </div>
 </div>
@@ -84,3 +108,9 @@
     >{{ registerForm.valid }}
   </span>
 </h3>
+<h3>Name errors</h3>
+<pre>{{ registerForm.controls.name.errors | json }}</pre>
+<h3>Email errors</h3>
+<pre>{{ registerForm.controls.email.errors | json }}</pre>
+<h3>Username errors</h3>
+<pre>{{ registerForm.controls.username.errors | json }}</pre>
