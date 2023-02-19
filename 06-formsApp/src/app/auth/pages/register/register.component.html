@@ -34,8 +34,10 @@
           placeholder="Email"
           formControlName="email"
         />
-        <span *ngIf="isValidField('email')" class="small text-danger-emphasis"
-          >Invalid email</span
+        <span
+          *ngIf="getErrorMessage('email') as errorMessage"
+          class="small text-danger-emphasis"
+          >{{ errorMessage }}</span
         >
       </div>
 
@@ -118,6 +120,19 @@
     >{{ registerForm.valid }}
   </span>
 </h3>
+<h3>
+  Form Status:
+  <span [class]="registerForm.valid ? 'text-success' : 'text-danger'"
+    >{{ registerForm.status }}
+  </span>
+</h3>
+<h3>
+  Form Pending:
+  <span [class]="registerForm.valid ? 'text-success' : 'text-danger'"
+    >{{ registerForm.pending }}
+  </span>
+</h3>
+<hr />
 <h3>Name errors</h3>
 <pre>{{ registerForm.controls.name.errors | json }}</pre>
 <h3>Email errors</h3>
