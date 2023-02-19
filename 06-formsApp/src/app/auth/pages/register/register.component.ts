@@ -31,8 +31,10 @@ export class RegisterComponent {
         this.validators.validateUsername,
       ],
     ],
-    password: [''],
-    repeatPassword: [''],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    repeatPassword: ['', [Validators.required, Validators.minLength(6)]],
+  },{
+    validators: [this.validators.validateEquals('password', 'repeatPassword')]
   });
 
   constructor(private fb: FormBuilder, private validators: ValidatorService) {}
