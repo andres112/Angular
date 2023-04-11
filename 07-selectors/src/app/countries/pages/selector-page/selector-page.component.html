@@ -5,9 +5,9 @@
   <div class="row">
     <div class="col">
       <label for="region" class="form-label">Continent: </label>
-      <select id="region" class="form-control" formControlName="region">
+      <select *ngIf="regions$ | async as regions" id="region" class="form-control" formControlName="region">
         <option value="">--Select Continent--</option>
-        <option *ngFor="let region of regions; let i = index" [value]="i">
+        <option *ngFor="let region of regions" [value]="region | lowercase">
           {{ region }}
         </option>
       </select>

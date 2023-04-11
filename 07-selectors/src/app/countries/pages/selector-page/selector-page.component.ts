@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ReplaySubject } from 'rxjs';
+import { Country } from '../../models/country.model';
+import { CountriesService } from '../../services/countries.service';
 
 @Component({
   selector: 'app-selector-page',
@@ -8,19 +11,17 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class SelectorPageComponent {
   public myForm: FormGroup = this.fb.group({
-    region: '',
+    region: ['', Validators.required],
   });
 
-  // TODO: Change for response from restAPI
-  public regions: string[] = [
-    'Africa',
-    'Americas',
-    'Asia',
-    'Europe',
-    'Oceania',
-  ];
+  // fill selects with data from service
+  public regions$ = this.countryService.regions$;
+  public countries$ = new ReplaySubject<Country[]>(1);
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private countryService: CountriesService
+  ) {}
 
   public save(): void {
     console.log(this.myForm.value);
