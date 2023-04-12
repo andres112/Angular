@@ -19,7 +19,13 @@ export class CountriesService {
 
   public getCountriesByRegion(region: string): Observable<Country[]> {
     return this.http.get<Country[]>(
-      `${this.baseUrl}region/${region}?fields=name,cca3,flag`
+      `${this.baseUrl}region/${region}?fields=name,cca3,flag,borders`
+    );
+  }
+
+  public getCountryByCca3(cca3: string): Observable<Country> {
+    return this.http.get<Country>(
+      `${this.baseUrl}alpha/${cca3}?fields=name,flag`
     );
   }
 }

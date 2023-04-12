@@ -6,7 +6,12 @@
     <!-- select for regions -->
     <div class="col">
       <label for="region" class="form-label">Continent: </label>
-      <select *ngIf="regions$ | async as regions" id="region" class="form-control" formControlName="region">
+      <select
+        *ngIf="regions$ | async as regions"
+        id="region"
+        class="form-control"
+        formControlName="region"
+      >
         <option value="">--Select Continent--</option>
         <option *ngFor="let region of regions" [value]="region | lowercase">
           {{ region }}
@@ -17,10 +22,33 @@
     <!-- select for countries -->
     <div class="col">
       <label for="country" class="form-label">Country: </label>
-      <select *ngIf="countries$ | async as countries" id="country" class="form-control" formControlName="country">
+      <select
+        *ngIf="countries$ | async as countries"
+        id="country"
+        class="form-control"
+        formControlName="country"
+        [class.disabled]="countries.length === 0"
+      >
         <option value="">--Select Country--</option>
         <option *ngFor="let country of countries" [value]="country.cca3">
-          {{ country.flag }} - {{ country.name.common }}
+          {{ country.flag }} {{ country.name.common }}
+        </option>
+      </select>
+    </div>
+
+    <!-- select for borders -->
+    <div class="col">
+      <label for="border" class="form-label">Border: </label>
+      <select
+        *ngIf="borders$ | async as borders"
+        id="border"
+        class="form-control"
+        formControlName="border"
+        [class.disabled]="borders.length === 0"
+      >
+        <option value="">--Select Border--</option>
+        <option *ngFor="let border of borders" [value]="border">
+          {{ border }}
         </option>
       </select>
     </div>

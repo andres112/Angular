@@ -1,7 +1,8 @@
 export interface Country {
   name: Name;
-  cca3: string;
   flag: string;
+  cca3?: string;
+  borders?: string[];
 }
 
 export interface Name {
