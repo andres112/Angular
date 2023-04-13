@@ -1,9 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Observable, of, ReplaySubject, map } from 'rxjs';
+import { Observable, of, ReplaySubject, map, from, BehaviorSubject } from 'rxjs';
 import { Country } from '../../models/country.model';
 import { CountriesService } from '../../services/countries.service';
-import { switchMap, tap, filter, combineLatestWith } from 'rxjs/operators';
+import {
+  switchMap,
+  tap,
+  filter,
+  combineLatestWith,
+  mergeMap,
+  scan,
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-selector-page',
@@ -20,7 +27,7 @@ export class SelectorPageComponent implements OnInit {
   // fill selects with data from service
   public regions$ = this.countryService.regions$;
   public countries$ = new ReplaySubject<Country[]>(1);
-  public borders$ = new ReplaySubject<string[]>(1);
+  public borders$ = new BehaviorSubject<Country[]>([]);
   public countriesByRegion: Map<string, Country[]> = new Map();
 
   constructor(
@@ -53,13 +60,20 @@ export class SelectorPageComponent implements OnInit {
         combineLatestWith(this.countries$),
         map(([countryCode, countries]) => {
           this.myForm.get('border')?.setValue('');
+          this.borders$.next([]);
           const selected = countries.filter(
             (c: Country) => c.cca3 === countryCode
           )[0];
           return selected?.borders || [];
         }),
-        tap((borders) => {
-          this.borders$.next(borders);
+        switchMap((borders) =>
+          from(borders).pipe(
+            mergeMap((b) => this.countryService.getCountryByCca3(b))
+          )
+        ),
+        tap((country) => {
+          const borders = this.borders$.value;
+          this.borders$.next(borders.concat(country));
         })
       )
       .subscribe();

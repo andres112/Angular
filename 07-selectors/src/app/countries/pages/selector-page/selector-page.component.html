@@ -47,8 +47,8 @@
         [class.disabled]="borders.length === 0"
       >
         <option value="">--Select Border--</option>
-        <option *ngFor="let border of borders" [value]="border">
-          {{ border }}
+        <option *ngFor="let border of borders" [value]="border.cca3">
+          {{border.flag}} {{ border.name.common }}
         </option>
       </select>
     </div>

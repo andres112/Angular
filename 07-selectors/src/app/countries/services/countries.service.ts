@@ -25,7 +25,7 @@ export class CountriesService {
 
   public getCountryByCca3(cca3: string): Observable<Country> {
     return this.http.get<Country>(
-      `${this.baseUrl}alpha/${cca3}?fields=name,flag`
+      `${this.baseUrl}alpha/${cca3}?fields=name,flag,cca3`
     );
   }
 }
