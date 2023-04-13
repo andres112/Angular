@@ -1,3 +1,7 @@
 <h1>Lifecycle Hooks - Angular</h1>
 
-<app-page1></app-page1>
+<button (click)="componentStatus = !componentStatus">
+    {{componentStatus ? 'Destroy' : 'Create'}}
+</button>
+
+<app-page1 *ngIf="componentStatus"></app-page1>
