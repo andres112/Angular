@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Observable, of, ReplaySubject, map, from, BehaviorSubject } from 'rxjs';
-import { Country } from '../../models/country.model';
-import { CountriesService } from '../../services/countries.service';
 import {
+  Observable,
+  of,
+  ReplaySubject,
+  map,
+  from,
+  BehaviorSubject,
   switchMap,
   tap,
-  filter,
   combineLatestWith,
   mergeMap,
-  scan,
-} from 'rxjs/operators';
+} from 'rxjs';
+import { Country } from '../../models/country.model';
+import { CountriesService } from '../../services/countries.service';
 
 @Component({
   selector: 'app-selector-page',
@@ -29,6 +32,8 @@ export class SelectorPageComponent implements OnInit {
   public countries$ = new ReplaySubject<Country[]>(1);
   public borders$ = new BehaviorSubject<Country[]>([]);
   public countriesByRegion: Map<string, Country[]> = new Map();
+
+  public loading = false;
 
   constructor(
     private fb: FormBuilder,
@@ -57,6 +62,7 @@ export class SelectorPageComponent implements OnInit {
     this.myForm
       .get('country')
       ?.valueChanges.pipe(
+        tap(() => (this.loading = true)),
         combineLatestWith(this.countries$),
         map(([countryCode, countries]) => {
           this.myForm.get('border')?.setValue('');
@@ -74,6 +80,7 @@ export class SelectorPageComponent implements OnInit {
         tap((country) => {
           const borders = this.borders$.value;
           this.borders$.next(borders.concat(country));
+          this.loading = false;
         })
       )
       .subscribe();

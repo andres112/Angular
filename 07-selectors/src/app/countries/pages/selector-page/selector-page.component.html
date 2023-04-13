@@ -48,12 +48,17 @@
       >
         <option value="">--Select Border--</option>
         <option *ngFor="let border of borders" [value]="border.cca3">
-          {{border.flag}} {{ border.name.common }}
+          {{ border.flag }} {{ border.name.common }}
         </option>
       </select>
     </div>
   </div>
 
+  <div *ngIf="loading" class="alert alert-info mt-2" role="alert">
+    Loading data...
+  </div>
+
+  <!-- button -->
   <div class="row mt-3">
     <div class="col">
       <button type="submit" class="btn btn-success float-end">Select</button>
