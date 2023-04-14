@@ -1,1 +1,6 @@
-<p>page1 works!</p>
+<h3>Clock Watch: {{ clockWatch }}</h3>
+Interval time: {{interval}}
+<br>
+<br>
+<button (click)="changeClockSpeed(true)">accelerate</button>
+<button (click)="changeClockSpeed(false)">decelerate</button>

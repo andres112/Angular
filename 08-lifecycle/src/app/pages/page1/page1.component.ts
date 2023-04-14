@@ -10,6 +10,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-page1',
@@ -27,12 +28,17 @@ export class Page1Component
     AfterViewChecked,
     OnDestroy
 {
+  public clockWatch = 0;
+  public interval = 1000;
+  private _subs!: Subscription;
+
   constructor() {
     console.log('Page1Component constructor');
   }
 
   public ngOnInit(): void {
     console.log('Page1Component ngOnInit');
+    this._subs = interval(this.interval).subscribe(() => this.clockWatch++);
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -61,5 +67,12 @@ export class Page1Component
 
   public ngOnDestroy(): void {
     console.log('Page1Component ngOnDestroy');
+    this._subs.unsubscribe();
+  }
+
+  public changeClockSpeed(accelerate: boolean): void {
+    this.interval = accelerate ? this.interval / 2 : this.interval * 2;
+    this._subs.unsubscribe();
+    this._subs = interval(this.interval).subscribe(() => this.clockWatch++);
   }
 }
