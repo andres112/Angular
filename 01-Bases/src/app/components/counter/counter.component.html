@@ -2,3 +2,6 @@
 <h2>{{ accumulatorNumber }}</h2>
 <button class="increment" (click)="modifyCounter(1)">+1</button>
 <button (click)="modifyCounter(-1)">-1</button>
+<button (click)="autoToggler()" [class.increment]="autoStatus">
+  {{ autoStatus ? "On" : "Off" }}
+</button>
