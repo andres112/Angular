@@ -5,11 +5,17 @@
       let f of fighters;
       let i = index;
       let first = first;
-      let last = last
+      let last = last;
+      let odd = odd;
+      let even = even;
+      let count = count
     "
+    [class.odd]="odd"
+    [class.even]="even"
   >
     {{ i + 1 }}. {{ f.name }} - {{ f.power | number }}
     <span class="text-primary" *ngIf="first"> First </span>
     <span class="text-danger" *ngIf="last"> Last </span>
+    <span *ngIf="last" style="font-weight: bold">Total: {{ count }}</span>
   </li>
 </ul>

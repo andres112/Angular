@@ -5,6 +5,13 @@
   font-family: "Mali", cursive;
 }
 
+:root {
+  --primary: rgb(42, 230, 42);
+  --danger: rgb(241, 43, 43);
+  --soft-danger: rgba(241, 43, 43, 0.1);
+  --soft-primary: rgba(42, 230, 42, 0.1);
+}
+
 html,
 body {
   background: rgb(255, 255, 255);
@@ -43,10 +50,19 @@ button:focus {
 }
 
 .text-danger{
-  color: rgb(241, 43, 43);
+  color: var(--danger)
 }
 .text-primary{
-  color: rgb(42, 230, 42);
+  color: var(--primary)
+}
+
+li.odd{
+  background: var(--soft-danger);
+  border-bottom: var(--danger) 1px solid;
+}
+li.even{
+  background: var(--soft-primary);
+  border-bottom: var(--primary) 1px solid;
 }
 
 .p-1 {
