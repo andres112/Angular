@@ -9,7 +9,7 @@ import { DbzService } from '../services/dbz.service';
 export class FightersComponent {
   // @Input('data') fighters: FighterInterface[] = [];
   get fighters(): FighterInterface[] {
-    return this.dbzService.fighters;
+    return this.dbzService.fighters.sort((a, b) => b.power - a.power);
   }
   // Dependency Injection
   constructor(private dbzService: DbzService) {}

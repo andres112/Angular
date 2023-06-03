@@ -42,6 +42,13 @@ button:focus {
   outline: none;
 }
 
+.text-danger{
+  color: rgb(241, 43, 43);
+}
+.text-primary{
+  color: rgb(42, 230, 42);
+}
+
 .p-1 {
   padding: 1px;
 }
