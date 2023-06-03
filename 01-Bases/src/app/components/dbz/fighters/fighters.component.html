@@ -1,4 +1,15 @@
 <h3>Fighters</h3>
 <ul>
-  <li *ngFor="let f of fighters">{{ f.name }} - {{ f.power | number }}</li>
+  <li
+    *ngFor="
+      let f of fighters;
+      let i = index;
+      let first = first;
+      let last = last
+    "
+  >
+    {{ i + 1 }}. {{ f.name }} - {{ f.power | number }}
+    <span class="text-primary" *ngIf="first"> First </span>
+    <span class="text-danger" *ngIf="last"> Last </span>
+  </li>
 </ul>
